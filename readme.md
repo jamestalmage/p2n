@@ -13,7 +13,9 @@ promise.then(
 
 However, if `cb` throws, that results in an unhandled promise rejection. The error will not bubble up and crash the node process, or hit the browser console in older browsers. This breaks the typical contract of node callbacks, and can lead to hidden, hard to find bugs. The tendency of Promises to silently swallow errors earned them plenty of detractors in the Node community.
 
-Works on Node and in the browser. In the browser it uses `setTimeout` to throw errors outside the promise stack, which should be fine unless you are throwing many, many errors each second, in which case, you could [polyfill `setImmediate`](https://github.com/YuzuJS/setImmediate), but that's probably overkill.
+This module handles all the above problems, and works on Node and in the browser. It uses `setImmediate` in Node to throw errors outside the promise stack, and falls back to `setTimeout` in the browser. This is the exact same mechanism Promise libraries like `Bluebird` use to "nodeify" promises, but without the bulk of those huge libraries.
+ 
+Note: If you are running this in the browser, and throwing many, many errors each second, you *may* want to [polyfill `setImmediate`](https://github.com/YuzuJS/setImmediate). We avoid including it by default because it adds unnecessary bulk to your browser bundle if errors are infrequent.
 
 ## Install
 
