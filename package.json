@@ -1,6 +1,6 @@
 {
 	"name": "p2n",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "A very lightweight way to nodefiy a promise.",
 	"license": "MIT",
 	"repository": "jamestalmage/p2n",
