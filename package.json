@@ -1,0 +1,66 @@
+{
+	"name": "p2n",
+	"version": "0.0.0",
+	"description": "A very lightweight way to nodefiy a promise.",
+	"license": "MIT",
+	"repository": "jamestalmage/p2n",
+	"author": {
+		"name": "James Talmage",
+		"email": "james@talmage.io",
+		"url": "github.com/jamestalmage"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {
+		"test": "xo && nyc ava",
+		"build": "babel index.js -o browser.js",
+		"prepublish": "npm run build"
+	},
+	"files": [
+		"index.js",
+		"browser.js"
+	],
+	"browser": "browser.js",
+	"keywords": [
+		"promise",
+		"nodeify",
+		"callback"
+	],
+	"dependencies": {
+		"global": "^4.3.2"
+	},
+	"devDependencies": {
+		"ava": "^0.20.0",
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
+		"codecov": "^2.2.0",
+		"nyc": "^11.0.0",
+		"testdouble": "^3.2.6",
+		"xo": "^0.18.2"
+	},
+	"nyc": {
+		"reporter": [
+			"lcov",
+			"text"
+		]
+	},
+	"ava": {
+		"serial": true
+	},
+	"babel": {
+		"presets": [
+			[
+				"env",
+				{
+					"targets": {
+						"browsers": [
+							"> 1%"
+						]
+					}
+				}
+			]
+		]
+	}
+}
